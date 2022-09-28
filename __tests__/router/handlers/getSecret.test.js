@@ -2,7 +2,7 @@
 
 process.env.SECRET = 'TEST_SECRET';
 
-const { handleSecret } = require('../../router/handlers');
+const { handleSecret } = require('../../../router/handlers');
 
 describe('testing the users route handler', () => {
 
