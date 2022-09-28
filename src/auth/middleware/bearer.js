@@ -18,4 +18,4 @@ module.exports = async (req, res, next) => {
     console.error(e);
     res.status(403).send('Invalid Login');
   }
-}
+};

@@ -8,10 +8,12 @@ const userSchema = (sequelize, DataTypes) => {
     username: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true },
+      unique: true,
+    },
     password: {
       type: DataTypes.STRING,
-      allowNull: false, },
+      allowNull: false,
+    },
     token: {
       type: DataTypes.VIRTUAL,
       get() {
@@ -31,7 +33,7 @@ const userSchema = (sequelize, DataTypes) => {
     const valid = await bcrypt.compare(password, user.password);
     if (valid) { return user; }
     throw new Error('Invalid User');
-  }
+  };
 
   // Bearer AUTH: Validating a token
   model.authenticateToken = async function (token) {
