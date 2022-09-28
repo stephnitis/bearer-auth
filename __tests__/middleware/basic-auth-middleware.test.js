@@ -29,7 +29,7 @@ describe('Auth Middleware', () => {
   const res = {
     status: jest.fn(() => res),
     send: jest.fn(() => res),
-  }
+  };
   const next = jest.fn();
 
   describe('user authentication', () => {
