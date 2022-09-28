@@ -9,9 +9,10 @@ module.exports = async (req, res, next) => {
     next('Invalid login');
   }
 
+  let basic = req.headers.authorization.split(' ').pop();
+  let [username, password] = base64.decode(basic).split(':');
+
   try {
-    let basic = req.headers.authorization;
-    let [username, password] = base64.decode(basic).split(':');
     req.users = await users.authenticateBasic(username, password),
     next();
   } catch (e) {

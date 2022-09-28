@@ -9,7 +9,7 @@ module.exports = async (req, res, next) => {
   } else {
     try {
       const token = req.headers.authorization.split(' ').pop();
-      const validUser = await users.authenticateBearer(token);
+      const validUser = await users.authenticateToken(token);
 
       if (validUser){
         req.user = validUser;

@@ -23,7 +23,7 @@ const userSchema = (sequelize, DataTypes) => {
   });
 
   model.beforeCreate(async (user) => {
-    let hashedPass = bcrypt.hash(user.password, 10);
+    let hashedPass = await bcrypt.hash(user.password, 10);
     user.password = hashedPass;
   });
 
@@ -42,9 +42,9 @@ const userSchema = (sequelize, DataTypes) => {
   // Bearer AUTH: Validating a token
   model.authenticateToken = async function (token) {
     try {
-      const parsedToken = jwt.verify(token, process.env.SECRET, {expiresIn: 86400000});
+      const parsedToken = await jwt.verify(token, process.env.SECRET, {expiresIn: 86400000});
 
-      const user = this.findOne({ username: parsedToken.username });
+      const user = await this.findOne({ username: parsedToken.username });
       if (user) {
         return user;
       }
