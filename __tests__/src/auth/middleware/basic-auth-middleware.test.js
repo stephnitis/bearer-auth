@@ -1,6 +1,6 @@
 'use strict';
 
-process.env.SECRET = "TEST_SECRET";
+process.env.SECRET = 'TEST_SECRET';
 
 const base64 = require('base-64');
 const middleware = require('../../../../src/auth/middleware/basic.js');
@@ -28,7 +28,7 @@ describe('Auth Middleware', () => {
   const req = {};
   const res = {
     status: jest.fn(() => res),
-    send: jest.fn(() => res)
+    send: jest.fn(() => res),
   }
   const next = jest.fn();
 
