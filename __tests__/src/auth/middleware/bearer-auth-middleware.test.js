@@ -2,8 +2,8 @@
 
 process.env.SECRET = 'TEST_SECRET';
 
-const bearer = require('../../src/auth/middleware/basic');
-const { db, users } = require('../../src/auth/models/index.js');
+const bearer = require('../../../../src/auth/middleware/bearer.js');
+const { db, users } = require('../../../../src/auth/models/index.js');
 const jwt = require('jsonwebtoken');
 
 let userInfo = {
@@ -27,7 +27,7 @@ describe('Auth Middleware', () => {
     status: jest.fn(() => res),
     send: jest.fn(() => res),
     json: jest.fn(() => res),
-  }
+  };
   const next = jest.fn();
 
   describe('user authentication', () => {

@@ -3,7 +3,6 @@
 const { users } = require('../models/index.js');
 
 async function handleSignup(req, res, next) {
-  console.log('signup exists');
   try {
     let userRecord = await users.create(req.body);
     const output = {
@@ -32,8 +31,8 @@ async function handleSignin(req, res, next) {
 
 async function handleGetUsers(req, res, next) {
   try {
-    const userRecord = await users.findAll({});
-    const list = userRecord.map(user => user.username);
+    const userRecords = await users.findAll({});
+    const list = userRecords.map(user => user.username);
     res.status(200).json(list);
   } catch (e) {
     console.error(e);
